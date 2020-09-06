@@ -1,8 +1,10 @@
-CC = tcc
+CC = cc
 LD = $CC
 VERSION = 4
 LOCAL = $HOME/local
 BIN = $LOCAL/bin
+SHR = $LOCAL/shr
+MAN = $SHR/man
 PNGLIB = -lpng
 JPGLIB = -ljpeg
 LIB = $PNGLIB $JPGLIB

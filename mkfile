@@ -14,7 +14,9 @@ all:VQ: $TGT
 install :V: $TGT
 	mkdir -p $BIN $MAN/^(1 5)
 	cp -f $TGT $BIN/ 
-	chmod 0755 $BIN/^($TGT)
+	cp -f $FFCONVFILE $BIN/$FFCONVNAME
+	cp -f webp2ff.rc $BIN/webp2ff
+	chmod 0755 $BIN/^($TGT 2ff webp2ff)
 	for(i in $TGT)
 		cp -f $i-man $MAN/1/$i
 	cp -f farbfeld-man $MAN/5/farbfeld

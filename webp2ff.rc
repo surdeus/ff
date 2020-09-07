@@ -1,0 +1,15 @@
+#!/bin/env rcl
+
+file = $1
+switch($#*){
+	case 0
+		exec dwebp -o - -- - | png2ff
+	case 1
+		if(test ! -f $file){
+			echo $0: $1: no such file  >[2=1]
+			exit 1
+		}
+		exec dwebp $file -o - | png2ff
+	case *
+		echo usage: $0 [file] >[2=1]
+}

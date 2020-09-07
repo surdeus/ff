@@ -1,0 +1,46 @@
+#!/bin/env rcl
+
+
+switch($#*){
+	case 1
+	case 0
+		formats = (jpg jpeg png gif webp ff bz2 xz gz)
+		for(i in $formats)
+			echo $i
+		exit 0
+	case *
+		echo usage: $0 [file] >[2=1]
+		exit 1
+}
+
+if(test ! -f $1){
+	echo $0: no such file "$1">[2=1]
+	exit 1
+}
+
+file = $1
+conv = ''
+switch($file){
+	case *.jpg *.jpeg
+		conv = jpg2ff
+	case *.png
+		conv = png2ff
+	case *.gif
+		conv = gif2ff
+	case *.webp
+		conv = webp2ff
+	case *.ff
+		conv = cat
+	case *.bz2
+		conv = (bzip2 -dc)
+	case *.gz
+		conv = (gzip -dc)
+	case *.xz
+		conv = (xz -dc)
+	case *
+		echo $0: $1: unknown extension >[2=1]
+		exit 1
+}
+
+exec $conv < $file
+

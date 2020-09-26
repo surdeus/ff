@@ -38,8 +38,7 @@ switch($file){
 	case *.xz
 		conv = (xz -dc)
 	case *
-		echo $0: $1: unknown extension >[2=1]
-		exit 1
+		conv = cat
 }
 
 exec $conv < $file

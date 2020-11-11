@@ -1,4 +1,4 @@
-#!/bin/env rcl
+#!/bin/env rc
 
 file = $1
 switch($#*){
@@ -13,3 +13,4 @@ switch($#*){
 	case *
 		echo usage: $0 [file] >[2=1]
 }
+

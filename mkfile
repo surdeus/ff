@@ -9,14 +9,13 @@ all:VQ: $TGT
 	echo -n
 %: %.o $REQ
 	$CC -o $target $LDFLAGS $prereq
+CFLAGS = $CPPFLAGS
 %.o : %.c
 	$CC -c -o $target $CFLAGS $prereq
 install :V: $TGT
-	mkdir -p $BIN $MAN/^(1 5)
-	cp -f $TGT $BIN/ 
-	cp -f $FFCONVFILE $BIN/$FFCONVNAME
-	cp -f webp2ff.rc $BIN/webp2ff
-	chmod 0755 $BIN/^($TGT 2ff webp2ff)
+	mkdir -p $EXE $MAN/^(1 5)
+	cp -f $TGT $SCRIPT $EXE/ 
+	chmod 0755 $EXE/^($TGT $SCRIPT)
 	for(i in $TGT)
 		cp -f $i-man $MAN/1/$i
 	cp -f farbfeld-man $MAN/5/farbfeld
@@ -24,4 +23,4 @@ install :V: $TGT
 clean :V:
 	rm -f $TGT $OBJ
 uninstall :V:
-	rm -f $BIN/^($TGT)
+	rm -f $EXE/^($TGT)

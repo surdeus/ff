@@ -1,5 +1,4 @@
-#!/bin/env rcl
-
+#!/bin/env rc
 
 switch($#*){
 	case 1

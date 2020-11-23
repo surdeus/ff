@@ -20,21 +20,21 @@ if(test ! -f $1){
 file = $1
 conv = ''
 switch($file){
-	case *.jpg *.jpeg
+	case *.jpg *.jpeg *.jpe *.JPG *.JPEG *.JPE
 		conv = jpg2ff
-	case *.png
+	case *.png *.png
 		conv = png2ff
-	case *.gif
+	case *.gif *.GIF
 		conv = gif2ff
-	case *.webp
+	case *.webp *.WEBP
 		conv = webp2ff
 	case *.ff
 		conv = cat
-	case *.bz2
+	case *.bz2 *.bz2
 		conv = (bzip2 -dc)
-	case *.gz
+	case *.gz *.GZ
 		conv = (gzip -dc)
-	case *.xz
+	case *.xz *.XZ
 		conv = (xz -dc)
 	case *
 		conv = cat

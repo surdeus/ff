@@ -4,6 +4,7 @@ switch($#*){
 	case 1
 	case 0
 		formats = (jpg jpeg png gif webp ff bz2 xz gz)
+		formats = ($formats `{echo $formats | tr a-z A-Z})
 		for(i in $formats)
 			echo $i
 		exit 0

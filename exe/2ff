@@ -3,7 +3,7 @@
 switch($#*){
 	case 1
 	case 0
-		formats = (jpg jpeg png gif webp ff bz2 xz gz)
+		formats = (jpg jpeg png gif webp ff bz2 xz gz xpm)
 		formats = ($formats `{echo $formats | tr a-z A-Z})
 		for(i in $formats)
 			echo $i
@@ -37,6 +37,8 @@ switch($file){
 		conv = (gzip -dc)
 	case *.xz *.XZ
 		conv = (xz -dc)
+	case *.xpm *.XPM
+		conv = (xpm2ff)
 	case *
 		conv = cat
 }
